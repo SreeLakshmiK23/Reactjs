@@ -1,0 +1,39 @@
+
+.actualtwo{
+    display:flex;  
+    justify-content:center; 
+    align-Items:center;
+   }
+   
+   .image
+   {
+    /* background-color: rgb(235, 236, 240); */
+    background-image: url("bg.jpg"); 
+    background-repeat: repeat-x;
+    background-position: right top;
+   }
+  
+   .bg
+   {
+      width: 800px;
+      height: 800px;
+      border: 5px solid rgb(9, 2, 95);
+      padding: 50px;
+      margin: 10px;
+      
+  
+   }
+   .container-c
+   {
+    padding-left: 1.5rem;
+    padding-right: 3rem;
+    width: 558px;
+    height:480px;
+    background: rgb(142, 197, 194);
+    /* background:transparent; */
+    left: 390px;
+    top: 186px;
+    position: absolute;
+    padding-top: 2rem;
+
+        }

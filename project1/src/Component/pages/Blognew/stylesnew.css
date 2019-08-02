@@ -1,0 +1,28 @@
+body {
+    margin: 10rem;
+}
+
+.contacts {
+    display:inline-flexbox; 
+    flex-wrap: wrap; 
+    /* display: flex;
+    flex-wrap: unset;      */
+}
+
+.contact-card {
+    flex-basis: 250px;
+    margin: 20px;
+}
+
+.contact-card  img {
+    width: 50%;
+    height: 50%;
+}
+
+.contact-card  h3 {
+    text-align: left;
+}
+
+.contact-card  p {
+    font-size: 12px;
+}
