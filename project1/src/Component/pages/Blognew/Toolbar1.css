@@ -82,11 +82,11 @@ text-decoration:none;
 }
 
  
-.actual{
+.actualstyle{
     /* align-items: flex-end; */
     text-align: center;
     display: inline-block;
-    font-size: 4.5rem;
+    /* font-size: 1.5rem; */
     display:flex;  
     justify-content:center; 
     align-Items:center;

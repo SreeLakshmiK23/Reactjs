@@ -15,11 +15,11 @@ import {nav} from 'react-bootstrap';
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
 import { EditorState, convertToRaw, ContentState } from 'draft-js';
-
+import {Redirect} from 'react-router-dom';
 // class Welcome extends Component{
     // class UncontrolledEditor extends Component {
 
-        class EditorConvertToHTML extends Component {
+class EditorConvertToHTML extends Component {
   constructor(props) {
     super(props);
     const html = '<p>Hey this <strong>editor</strong> rocks 😀</p>';
@@ -34,51 +34,29 @@ import { EditorState, convertToRaw, ContentState } from 'draft-js';
       };
     }
   }
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       editorState: EditorState.createEmpty(),
-//       title:'' ,
-//     subject:'' ,
-//     };
-//   }
 
   
+    state=
+    {
+        redirect:false
 
-    // state=
-    // {
-    //     redirect:false
+    }
 
-    // }
+    setRedirect=() =>
+    {
+        this.setState({
+            redirect:true
+        })
+    }
 
-    // setRedirect=() =>
-    // {
-    //     this.setState({
-    //         redirect:true
-    //     })
-    // }
+    renderRedirect =() =>{
+        if(this.state.redirect)
+        {
+            return<Redirect to='/displayblog'/>
+        }
+    }
 
-    // renderRedirect =() =>{
-    //     if(this.state.redirect)
-    //     {
-    //         return<Redirect to='/displayblog'/>
-    //     }
-    // }
-
-    //  constructor(props)
-    // {
-    //     super(props)
-
-    //     this.state=
-    //     {
-    //         title:'' ,
-    //         subject:'' ,
-    //         content:''
-    //         //onEditorStateChange:''
-            
-    //     }
-    // }
-
+ 
     onEditorStateChange = (editorState) => {
     this.setState({
       editorState,
@@ -102,12 +80,13 @@ import { EditorState, convertToRaw, ContentState } from 'draft-js';
         })
     }
    
- render(){ 
+ render()
+ { 
     const { editorState } = this.state;
       const{title,subject,content}=this.state
     return(
       
-      <div >
+      <div>
 
                   <nav class="navbar navbar-dark bg-light">
                     {/* <a class="navbar-brand" href="#" > */}
@@ -118,13 +97,11 @@ import { EditorState, convertToRaw, ContentState } from 'draft-js';
                     ONBOARDING
                     {/* </a> */}
                     </nav>
-               <h1><center >Write a Blog</center></h1>
-          {/* <div className="image"> */}
-              {/* <h1><center style={{color:"white"}}>Write a Blog</center></h1> */}
+       {/* <div > */}
+               <h1><center ><strong>Write a Blog</strong></center></h1>
+            
               <div className="container-c">
-                {/* <div className="actual"> 
-                style={{color:"brown"}}*/}
-                    
+                       
                   
                       <form onSubmit={this.submitHandler} >
                         
@@ -138,56 +115,37 @@ import { EditorState, convertToRaw, ContentState } from 'draft-js';
 
                         <p>Content:</p>    
                   
-             
-                   <Editor
+                  <div className= "container-y">
+                   <Editor 
+      
                     editorState={editorState}
                     wrapperClassName="demo-wrapper"
                     editorClassName="demo-editor"
                     // onEditorStateChange={this.onEditorStateChange}
-                    onEditorStateChange={this.onEditorStateChange}
-                                    
-                    
+                    onEditorStateChange={this.onEditorStateChange}            
                     />
                      <textarea
-          disabled
-          name="content"
-          value={draftToHtml(convertToRaw(editorState.getCurrentContent()))}
-        />
-                
+                      disabled
+                      name="content"
+                      value={draftToHtml(convertToRaw(editorState.getCurrentContent()))}
+                       />
+                   </div>
                     <hr/>
-                       <center>
-                       {/* <Button variant="primary" type="submit">Submit</Button> */}
-                 <button type="submit"  >Submit</button>
-                    </center>
-                  
-                  </form> 
-                  {/* <br/>
-                  <hr/>   */}
-                  
-                  {/* <div> */}
-                    {/* <center> <button type="button" class="btn btn-primary">SAVE</button>
-                    <button type="button" class="btn btn-primary">NEXT</button></center> */}
-                {/* </div> */}
-                   {/* <div>
-
-                     <center>
-                 <button type="submit" >Submit</button>
-                    </center> */}
+                     <br/> 
+                                  <div>
+                                    { this.renderRedirect()}
+                                     <div className="actualtwo">< input type="submit"   class="btn btn-primary" value="Submit" onClick={this.setRedirect} /></div><br/>
+                                    <div className="h2">< input type="submit"   class="btn btn-primary" value="Next" onClick={this.setRedirect}
+                                    style={{padding:" 12px 28px"} ,{lineHeight: "1rem"} ,{width: "70px"}} /></div>
+                                  </div> 
                     
-             {/* { this.renderRedirect()}
-        
-         <center><input type="submit" value="SAVE" onClick={this.setRedirect} />
-       <button type="button" class="btn btn-primary">NEXT</button></center> style={{width: "500px"}} */}
-        {/* </div>
-         */}
-        {/* </div>   */}
-        
-
+                  </form>
+                          
               </div>
             
-          </div>   
+            
                 
-    // </div>
+      </div> 
     
 
     );

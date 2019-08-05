@@ -28,8 +28,9 @@
     padding-left: 1.5rem;
     padding-right: 3rem;
     width: 558px;
-    height:480px;
-    background: rgb(142, 197, 194);
+    height:610px;
+    /* overflow: auto; */
+    background: rgb(100, 194, 189);
     /* background:transparent; */
     left: 390px;
     top: 186px;
@@ -37,3 +38,10 @@
     padding-top: 2rem;
 
         }
+
+    .container-y{
+        width:518px;
+        height:350px;
+        /* position: fixed; */
+        overflow: auto;
+    }

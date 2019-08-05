@@ -10,7 +10,7 @@ import './styles.css';
 // import {Button,Form} from 'react-bootstrap/Button';
 
 import {Redirect} from 'react-router-dom';
-
+import Popup from "reactjs-popup";
 
 
 class Faq extends Component{
@@ -68,27 +68,27 @@ class Faq extends Component{
     {
         const{question,category,answer}=this.state
         return(
-            <div>
+            
                 
-                <div>
+        <div >
                    <nav className="navbar navbar-dark bg-light">
-                    {/* <a class="navbar-brand" href="#" > */}
+                    
                     <img src={require("/home/nineleaps/Desktop/project1/src/Component/pages/Faq/nine1.jpg")}
                      width="200" height="80" 
                     class="d-inline-block align-top" 
                     alt="React Bootstrap logo"/>
                     ONBOARDING
-                    {/* </a> */}
+                   
                     </nav>
    
-           
+         
             <div >
-                <h1 style={{color: "Black"}}><center>Hello Admin!</center></h1>
+                <p style={{fontSize: "30px",color: "Black"}}><center><strong>Hello Admin!</strong></center></p>
                 
-                <h3 style={{fontSize: "30px", color:"Black"}}><center>Welcome to FAQ page</center></h3>
-                
+                <p style={{fontSize: "30px", color:"Black"}}><center><strong>Welcome to FAQ page</strong></center></p>
+                         <body>
                       
-                            <div className="overflowTest">
+                            <div className="overflowTest"  >
                                 {/* <form className="container-a"> */}
                                     <div className="actualone">
                                     <form onSubmit={this.submitHandler }>
@@ -97,30 +97,52 @@ class Faq extends Component{
                                     {/* <textarea cols={50} rows={2} style= {{width:"398.017px"}}/>  */}
                                       <input type="text" name="question" value={question} onChange={this.changeHandler} style={{width: "500px"}}/>
                                     <p>Category:</p> 
-                                    <input type="text" name="category" value={category} onChange={this.changeHandler} style={{width: "500px"}}/>
+                                    {/* <input type="text" name="category" value={category} onChange={this.changeHandler} style={{width: "500px"}}/> */}
+                                        <div>
+                                            <select defaultValue={this.state.selectValue} name="category" value={category}
+                                            onChange={this.changeHandler} >
+                                             
+                                                <option value="Accomodation">Accomodation</option>
+                                                <option value="Finance">Finance</option>
+                                                <option value="Benefits">Benefits</option>
+                                                <option value="Opportunities">Opportunities</option>
+                                                <option value="Major Clients">Major Clients</option>
+                                                <option value="Technologies used">Technologies used</option>
+                                            </select>
+                                            
+                                        </div>
+
                                     <p>Answer:</p>
                                       <input type="text" name="answer" value={answer} onChange={this.changeHandler} style={{width: "500px"}}/>
                                     
                                     {/* <textarea cols={50} rows={5} style= {{width:"398.017px"}}/> */}
+                                    <br/> 
+
+
 
                                     <p>Click here to submit</p>
+                                    
                                     <div>
                                     { this.renderRedirect()}
-                                    <div className="actualone">< input type="submit" value="Submit" onClick={this.setRedirect} /></div>
+                                    <div className="actualone">
+                                    < input type="submit" class="btn btn-primary" value="Submit" onClick={this.setRedirect} /></div>
                                     </div>
-                                    <div>
-                                    <center>
-                                    <Button variant="primary" type="submit">Submit</Button>
-                                    {/* <button type="submit">Submit</button> */}
-                                    </center>
-                                    </div>
-                                
+
+                                    {/* export default () => ( */}
+  {/* <Popup trigger={<button> Submit</button>} position="right center">
+    <div>Data has been successfully submitted !!</div>
+  </Popup> */}
+{/* ); */}
+                                    
                                 </form>
                                 </div>
                             </div>
-             </div>     
-             </div>
-             </div>
+                     </body>    
+                    
+                    </div>  
+                   
+        </div>
+            
       
  );
 }

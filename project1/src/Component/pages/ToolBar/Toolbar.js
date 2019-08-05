@@ -1,8 +1,8 @@
-import React from 'react';
+import React , {Component} from 'react';
 import {button} from 'react-bootstrap';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import './Toolbar.css';
-// import {Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 
 
 // class toolbar extends Component
@@ -28,9 +28,32 @@ import './Toolbar.css';
      
 //     }
 
-const toolbar=props=> //functional component
-(    
-    
+// const toolbar=props=> 
+class Toolbar extends Component
+{
+    state=
+    {
+        redirect:false
+
+    }
+
+    setRedirect=() =>
+    {
+        this.setState({
+            redirect:true
+        })
+    }
+
+    renderRedirect =() =>{
+        if(this.state.redirect)
+        {
+            return<Redirect to='/'/>
+        }
+     
+    }
+   render()
+   {
+       return(
 <header className="toolbar">                
     <nav className="toolbar_navigation">
     {/* <div className="button_space"><input type="submit" value="ADD FAQ" /></div> */}
@@ -48,20 +71,20 @@ const toolbar=props=> //functional component
                 <ul >
                     <li><a href='/'>Checklist</a></li>
                     <li><a href='/'>Users</a></li>
-                    <li><a href='/'>Blog</a></li>
-                    <li><a href='/'>FAQ</a></li>
+                    <li><a href='./writeblog'>Blog</a></li>
+                    <li><a href='./faqdis'>FAQ</a></li>
                     <li><a href='/'>Logout</a></li>
                 </ul>
             </div>
     </nav>
     {/* <div className="button_space"><input type="submit" value="ADD FAQ" /></div> */}
     {/* <div className="button_space"><button type="button" class="btn btn-primary">ADD FAQ</button></div> */}
-<div className="actual"><button type="button" class="btn btn-primary">ADD FAQ</button></div>
+{/* <div className="actual"><button type="button" class="btn btn-primary">ADD FAQ</button></div> style={{fontSize: "40px"}}*/}
 
-{/* <div>
+ <div>
  { this.renderRedirect()}
- <div className="actualone">< input type="submit" value="Submit" onClick={this.setRedirect} /></div>
- </div> */}
+ <div className="actualone">< input type="submit" class="btn btn-primary"  value="Add FAQ" onClick={this.setRedirect} /></div>
+ </div> 
 
 
 
@@ -71,9 +94,9 @@ const toolbar=props=> //functional component
 
 
 </header>
+  
+       );
+   }
+}
 
-
-
-);
-
-export default toolbar;
+export default Toolbar;
