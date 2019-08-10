@@ -1,0 +1,43 @@
+{
+  "name": "onproject",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.3.1",
+    "@material/textfield": "^3.1.0",
+    "axios": "0.19.0",
+    "bootstrap": "^4.3.1",
+    "material-ui": "^0.20.2",
+    "material-ui-table": "^0.1.2",
+    "react": "^16.8.6",
+    "react-awesome-modal": "^2.0.5",
+    "react-dom": "^16.8.6",
+    "react-modal": "^3.9.1",
+    "react-router-dom": "5.0.1",
+    "react-scripts": "3.0.1",
+    "reactjs-popup": "^1.4.2",
+    "reactstrap": "8.0.1",
+    "react-bootstrap": "1.0.0-beta.11"
+  },
+  "scripts": {
+    "start": "PORT=8080 react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
