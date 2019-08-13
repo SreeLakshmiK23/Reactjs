@@ -1,0 +1,139 @@
+  .footer {
+    position: fixed;
+    align-items: center;
+    bottom: 0;
+    background-color: black;
+    color: blanchedalmond;
+    width: 100%;
+
+  } 
+
+  /*.container{
+    position: relative;
+    margin-right: 0% !important;
+    margin-left: 0px !important;
+    padding:0px;
+    height:100vh;
+    background-color: rgb(17, 57, 167);
+    width: 80%;
+  } */
+  /* .full
+  {
+    background-color:blanchedalmond;
+    padding-right: 0%;
+    /* background-image:src(/home/nineleaps/Desktop/onproject/onproject/src/Component/pages/Login/index.css;} */
+ .contain{
+  justify-content: left
+ }
+
+  /* .contain{
+    display: flex;
+    flex-direction:row;
+    justify-content: space-around;
+    height:50px ;
+    background-color:rgb(27, 223, 190);
+  }
+  .logo{
+   justify-content: left; 
+  }
+  img{
+    width:225px;
+    justify-content:left;
+    align-content:left;
+  }
+  li{
+    list-style: none;
+
+  } */
+  /* .content-body{
+    position: absolute;    
+    top:50%;
+    height:400px ;
+    left: 77%;
+    transform: translate(-50%,-50%);
+    border: 2px solid black;
+    padding:40px;
+    border-radius: 4px;
+    background:transparent;
+  } */
+  /* div p, div input{
+    display: inline; */
+    /* margin-bottom: 10px; */
+  
+  /* .inputfield{
+    margin-bottom: 40px;
+  }
+  .button{
+    display: flex;
+    justify-content: space-between;
+  }
+  .image{
+    
+    height: 80%;
+  width: 50%;
+  background-color: powderblue;
+  padding: 0%;
+
+  }
+  .image img{ 
+    height:550px ; 
+    width: 1299px;
+  }
+  .navbar{
+    background-color: rgb(27, 209, 233);
+    width: 100%;
+    margin-top: 20px;
+  } */
+  @media all and (min-width: 480px) {
+    .Login {
+      
+      background: url(../Login/ll.jpg)  ;
+      background-size: cover;
+      height: 580px;
+      width: 1300px;
+      
+      
+    }
+ 
+  .box{
+    height: 2px;
+    top:50%;
+    padding:40px;
+    margin-top: 100px;
+   
+  
+
+  }
+    .Login form {
+      /* padding: 60px 0;
+      margin: 0 auto;
+      max-width: 320px; */
+      position: absolute;    
+      top:50%;
+      height:350px ;
+       left: 70%; 
+      transform: translate(-50%,-50%);
+       /* border: 2px solid black;  */
+      padding:40px;
+      border-radius: 4px;
+      background:transparent;
+      width:40%;
+
+      
+      
+      line-height: inherit;
+       background-image:url(../Login/ll.jpg); 
+        
+       /* opacity: 0.5; */
+    }
+    .inputfield{
+      /* background-color: brown; */
+      margin:-129px -10px 12px -40px;
+      color:white;
+      
+    
+    }
+  }
+  .TextField{
+    color: white;
+  }
