@@ -1,10 +1,10 @@
   
-  body
+  /* body
   {
     background-image: url("que.jpg"); 
     background-repeat: repeat;
     overflow: auto;
-  } 
+  }  */
 
   .bgimage{
     background-image: url("que.jpg"); 
@@ -15,6 +15,7 @@
     display:flex;  
     justify-content:center; 
     align-Items:center;
+    margin:25px;
    
    }
    
@@ -23,7 +24,7 @@
     padding-right: 3rem;
     width: 600px;
     height:360px;
-    background: rgb(162, 161, 212);
+    background: rgb(129, 154, 172);
     left: 360px;
     top: 216px;
     position: absolute;
@@ -33,7 +34,7 @@
         }
 
          .footer {
-          position: fixed;
+          position: relative;
           left: 0;
           bottom: 0;
           width: 100%;

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Toolbar1.css';
-import button from 'react-bootstrap';
+// import button from 'react-bootstrap';
 import {Redirect} from 'react-router-dom';
 // const toolbar=props=> //functional component
 // (
@@ -23,7 +23,7 @@ import {Redirect} from 'react-router-dom';
     renderRedirect =() =>{
         if(this.state.redirect)
         {
-            return<Redirect to='/'/>
+            return<Redirect to='/writeblog'/>
         }
      
     }
@@ -35,7 +35,7 @@ import {Redirect} from 'react-router-dom';
     <nav className="toolbar_navigation">
    
     <div className="toolbar_logo"><img
-                          src={require("/home/nineleaps/Desktop/project1/src/Component/pages/Blognew/nine1.jpg")}
+                          src={require("/home/nineleaps/Desktop/Reactjs/project1/src/Component/pages/Blognew/nine1.jpg")}
                           width="150"
                           height="70"
                           className="d-inline-block align-top"
@@ -45,9 +45,9 @@ import {Redirect} from 'react-router-dom';
             <div className="spacer"/>
             <div className="toolbar_navigation-items">
                 <ul >
-                    <li><a href='/'>Checklist</a></li>
-                    <li><a href='/'>Users</a></li>
-                    <li><a href='./writeblog'>Blog</a></li>
+                    <li><a href='./checkdis'>Checklist</a></li>
+                    <li><a href='./userpage'>Users</a></li>
+                    <li><a href='./displayblog'>Blog</a></li>
                     <li><a href='./faqdis'>FAQ</a></li>
                     <li><a href='/'>Logout</a></li>
                 </ul>
@@ -60,7 +60,9 @@ import {Redirect} from 'react-router-dom';
 
  <div>
  { this.renderRedirect()}
- <div className="actualstyle">< input type="submit" value="CREATE BLOG" onClick={this.setRedirect} /></div>
+ <div className="actualstyle">
+ < input type="submit" class="btn btn-primary" value="CREATE BLOG" onClick={this.setRedirect} />
+ </div>
  </div> 
 
 </header>

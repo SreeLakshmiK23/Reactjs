@@ -1,8 +1,8 @@
 import React,{Component} from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import './Toolbar.css';
 import Toolbar from './Toolbar.js';
-
+import {Button} from 'react-bootstrap';
 
 class PostList extends Component
 
@@ -62,12 +62,12 @@ class PostList extends Component
         this.state=
         {
            items:[],
-           isolated:false,
+           isLoaded:false,
         }
     }
     componentDidMount()
          {
-      fetch('http://bb1ee001.ngrok.io/faq/display')
+      fetch('https://raw.githubusercontent.com/Asmitha-Asmi/Data_Json/master/faq.json')
        .then(res => res.json())
          .then(json => 
          {
@@ -99,6 +99,8 @@ render()
                           <p>Question: {item.question}</p>
                           <p>Category:{item.category}</p>
                           <p>Answer:{item.answer}</p>
+                           
+        <Button  size="sm" variant="danger">Delete</Button>
                                              
                 </div>
            

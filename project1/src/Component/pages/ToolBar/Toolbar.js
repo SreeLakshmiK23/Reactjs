@@ -1,5 +1,5 @@
 import React , {Component} from 'react';
-import {button} from 'react-bootstrap';
+// import {button} from 'react-bootstrap';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import './Toolbar.css';
 import {Redirect} from 'react-router-dom';
@@ -47,7 +47,7 @@ class Toolbar extends Component
     renderRedirect =() =>{
         if(this.state.redirect)
         {
-            return<Redirect to='/'/>
+            return<Redirect to='/writefaq'/>
         }
      
     }
@@ -59,7 +59,7 @@ class Toolbar extends Component
     {/* <div className="button_space"><input type="submit" value="ADD FAQ" /></div> */}
     {/* <div className="toolbar_logo"><a href="/">LoGo</a></div> */}
     <div className="toolbar_logo"><img
-                          src={require("/home/nineleaps/Desktop/project1/src/Component/pages/ToolBar/nine1.jpg")}
+                          src={require("/home/nineleaps/Desktop/Reactjs/project1/src/Component/pages/ToolBar/nine1.jpg")}
                           width="150"
                           height="70"
                           className="d-inline-block align-top"
@@ -69,9 +69,9 @@ class Toolbar extends Component
             <div className="spacer"/>
             <div className="toolbar_navigation-items">
                 <ul >
-                    <li><a href='/'>Checklist</a></li>
-                    <li><a href='/'>Users</a></li>
-                    <li><a href='./writeblog'>Blog</a></li>
+                    <li><a href='./table'>Checklist</a></li>
+                    <li><a href='./userpage'>Users</a></li>
+                    <li><a href='./displayblog'>Blog</a></li>
                     <li><a href='./faqdis'>FAQ</a></li>
                     <li><a href='/'>Logout</a></li>
                 </ul>

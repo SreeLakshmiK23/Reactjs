@@ -1,3 +1,17 @@
+/* .ModelTry{ */
+    /* background: #263238; */
+    /* border: 1px solid #d0cccc; */
+    /* box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.17); */
+    /* margin: 5px auto 0;
+    transition: all .8s;
+    width: 90%;
+    height: 20%; */
+/* } */
+.xyz{
+   
+    height: 50%;
+}
+
 .toolbar
 {   top:0;
     left:0;
@@ -31,15 +45,15 @@
     box-shadow: 10px 10px;
     padding-bottom: 1rem;
     }
-/* .jumbotron{
+.jumbotron{
     width:210px;
-    height:110px;
-    background:red;
-    left: 62px;
+    height:610px;
+    background:rgb(133, 96, 96);
+    left: 12px;
 
 top: 131px;
 position: absolute;
-} */
+}
 .toolbar_logo img
 {
     /* color:white; */
@@ -97,13 +111,82 @@ text-decoration:none;
 }
 
  
-.actual{
+.actualthree{
     /* align-items: flex-end; */
     text-align: center;
     display: inline-block;
-    font-size: 1.5rem;
+    font-size: 1rem;
     display:flex;  
     justify-content:center; 
     align-Items:center;
-    margin:25px;
+    margin:20px;
+
    }
+   .alignnew{
+       justify-content:center; 
+    align-Items:center;
+
+   }
+   .overflow{
+    padding-left: 3rem;
+    padding-right: 3rem;
+    /* width: 600px; */
+    /* height:360px; */
+    overflow-x: auto;
+    overflow-y: auto;
+    
+    /* background: rgb(225, 193, 240); */
+    left: 10px;
+    top: 106px;
+    position: absolute;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    
+
+        }
+
+.overflowone{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    overflow-x: auto;
+    overflow-y: auto;
+    left: 50px;
+  
+}
+
+.overflownew{
+    
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    overflow-y: auto;
+    
+    /* overflow-x: auto;
+    overflow-y: auto; */
+   
+}
+
+.container{
+    left: 5px;
+    right:10px;
+    top: 206px;
+    position: absolute;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.box
+{
+    width:80%;
+    overflow-y: auto;
+}
+
+.column-layout
+{
+    margin-top: 10rem;
+    margin-left: 5rem;
+   
+}

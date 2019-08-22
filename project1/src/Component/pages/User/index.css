@@ -7,7 +7,13 @@
     background-color: rgb(209, 224, 238)   
 
 }
-.container-b{
+.image{
+    width:225px;
+    height:70px;
+    font-size:none;
+    text-decoration: none;
+}
+.container-g{
     /* width: 1029px;
     height:400px;
     background: rgb(159, 167, 201); */
@@ -29,7 +35,6 @@
     padding-top: 1rem;
     background-color: rgb(88, 153, 228);
     box-shadow: 10px 10px;
-    padding-bottom: 1rem;
     }
 /* .jumbotron{
     width:210px;
@@ -40,15 +45,7 @@
 top: 131px;
 position: absolute;
 } */
-.toolbar_logo img
-{
-    /* color:white; */
-    font-size:none;
-    text-decoration: none;
-    /* width:"200";
-    height:"80"; */
-    
-}
+
 
 .button_space
 {
@@ -64,7 +61,8 @@ position: absolute;
 .toolbar_navigation
 {
     display:flex;
-    height:100%;
+    background-color:
+    rgb(177, 196, 219);
     align-items: center;
     padding:0 1rem;
 }
@@ -101,9 +99,17 @@ text-decoration:none;
     /* align-items: flex-end; */
     text-align: center;
     display: inline-block;
-    font-size: 1.5rem;
+    font-size: 4.5rem;
     display:flex;  
     justify-content:center; 
     align-Items:center;
     margin:25px;
    }
+   .footer {
+    position: fixed;
+    bottom: 0;
+  }
+  li{
+      list-style: none;
+      color:rgb(190, 188, 188);
+  }

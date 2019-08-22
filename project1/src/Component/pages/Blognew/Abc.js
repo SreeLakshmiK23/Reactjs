@@ -90,7 +90,7 @@ class Abc extends Component
     }
     componentDidMount()
          {
-      fetch('http://bb1ee001.ngrok.io/blog/display')
+      fetch('http://293edcd9.ngrok.io/blog/display')
        .then(res => res.json())
          .then(json => 
          {
@@ -117,17 +117,21 @@ render()
        <ContactCard/>
           <div> 
              {items.map(item =>(
-      //   <li key={item.id}>
+      //   <li key={item.id}> 
       //  Title: {item.title}| Subject:{item.subject}
       // </li>
+
+          // <img src={item.url } 
+          //                         width="600"
+          //                           height="400"
+          //                           alt="React Bootstrap logo"/>
+
                 <div key={item.id} className="container-z">
-                          <p>title : {item.title}</p>
+                          <p>Title : {item.title}</p>
                           <p>Subject:{item.subject}</p>
-                          <p>Content:{item.content}</p>
-                          <img src={item.url } 
-                                  width="600"
-                                    height="400"
-                                    alt="React Bootstrap logo"/>
+                       
+                          <p>Content:{item.textAreaContent}</p>
+                      
                     
                 </div>
            

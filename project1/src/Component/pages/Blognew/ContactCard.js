@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 import "./stylesnew.css";
 import Toolbarone from './Toolbar1';
 // import button from 'react-bootstrap';

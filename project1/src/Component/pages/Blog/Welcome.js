@@ -90,7 +90,7 @@ class EditorConvertToHTML extends Component {
 
                   <nav class="navbar navbar-dark bg-light">
                     {/* <a class="navbar-brand" href="#" > */}
-                    <img src={require("/home/nineleaps/Desktop/project1/src/Component/pages/Blog/nine1.jpg")}
+                    <img src={require("/home/nineleaps/Desktop/Reactjs/project1/src/Component/pages/Blog/nine1.jpg")}
                      width="200" height="80" 
                     class="d-inline-block align-top" 
                     alt="React Bootstrap logo"/>
@@ -115,14 +115,13 @@ class EditorConvertToHTML extends Component {
 
                         <p>Content:</p>    
                   
-                  <div className= "container-y">
+                  <div >
                    <Editor 
       
                     editorState={editorState}
                     wrapperClassName="demo-wrapper"
                     editorClassName="demo-editor"
-                    // onEditorStateChange={this.onEditorStateChange}
-                    onEditorStateChange={this.onEditorStateChange}            
+                   onEditorStateChange={this.onEditorStateChange}            
                     />
                      <textarea
                       disabled
@@ -134,9 +133,9 @@ class EditorConvertToHTML extends Component {
                      <br/> 
                                   <div>
                                     { this.renderRedirect()}
-                                     <div className="actualtwo">< input type="submit"   class="btn btn-primary" value="Submit" onClick={this.setRedirect} /></div><br/>
-                                    <div className="h2">< input type="submit"   class="btn btn-primary" value="Next" onClick={this.setRedirect}
-                                    style={{padding:" 12px 28px"} ,{lineHeight: "1rem"} ,{width: "70px"}} /></div>
+                                     <div className="actualtwo">< input type="submit"   class="btn btn-primary" value="Submit"  /></div>{' '}
+                                      <button onClick={this.setRedirect} class="btn btn-success" >Visit blog</button>
+                    
                                   </div> 
                     
                   </form>
@@ -144,9 +143,8 @@ class EditorConvertToHTML extends Component {
               </div>
             
             
-                
-      </div> 
     
+                       </div>
 
     );
 }
