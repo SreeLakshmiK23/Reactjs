@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 //import './login.css';
 import axios from 'axios';
 import Modal from 'react-awesome-modal';
-import Fetch from './Join';
+import Fetch from './fetch';
 // import Popup from "reactjs-popup";
 import './index.css';
 
@@ -46,11 +46,11 @@ class Userpage extends Component {
         this.setState({ [e.target.name]: e.target.value })
     }
 
-    submitHandler = e => {
+    submitHandlernew = e => {
         e.preventDefault()
         console.log(this.state)
         axios
-            .post('http://293edcd9.ngrok.io/final/save', this.state)
+            .post('http://b9263691.ngrok.io/final/save', this.state)
             .then(response => {
 
                 console.log(response)
@@ -64,13 +64,13 @@ class Userpage extends Component {
 
     }
 
-    openModal() {
+    openModalnew() {
         this.setState({
             visible: true
         });
     }
 
-    closeModal() {
+    closeModalnew() {
         this.setState({
             visible: false
         });
@@ -164,10 +164,11 @@ class Userpage extends Component {
                         </section>
                     </header>
 
-                    <Fetch />
+                    <Fetch/>
 
 
-                    {/* <div class="footer">
+                    {/*
+                     <div class="footer">
                         <p>Nineleaps</p>
                     </div> */}
                 </div>

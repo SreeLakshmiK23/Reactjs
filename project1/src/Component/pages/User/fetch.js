@@ -6,7 +6,6 @@ import Modal from 'react-awesome-modal';
 import Drop from './Drop.js';
 
 
-
 class Fetch extends Component {
   constructor(props){
     super(props);
@@ -21,7 +20,7 @@ i:1
 }
 
 componentDidMount(){
-  fetch('http://fe7ca1b8.ngrok.io/final/listuser')
+  fetch('http://b9263691.ngrok.io/final/listuser')
   .then(res => res.json())
   .then(json => {
     this.setState({

@@ -66,7 +66,7 @@ class Faq extends Component{
         e.preventDefault()
         console.log(this.state)
         axios
-        .post('http://b726b643.ngrok.io/faq/save',this.state)
+        .post('https://909f43c8.ngrok.io/faq/save',this.state)
 
         .then(response => {
             console.log(response)
@@ -74,6 +74,7 @@ class Faq extends Component{
         .catch(error => {
             console.log(error)
         })
+        //  window.location.reload(e);
     }
     render()
     {  
@@ -99,10 +100,7 @@ class Faq extends Component{
    
          
             <div >
-                <p style={{fontSize: "30px",color: "Black"}}><center><strong>Hello Admin!</strong></center></p>
                 
-                <p style={{fontSize: "30px", color:"Black"}}><center><strong>Welcome to FAQ page</strong></center></p>
-                        
                       
                             <div className="overflowTest"  >
                                 {/* <form className="container-a"> */}
@@ -111,9 +109,9 @@ class Faq extends Component{
                                    
                                      <p >Question:</p>
                                     {/* <textarea cols={50} rows={2} style= {{width:"398.017px"}}/>  */}
-                                      <input type="text" name="question" value={this.state.question} onChange={this.changeHandler} style={{width: "500px"}}/>
+                                      <input type="text" required name="question" value={this.state.question} onChange={this.changeHandler} style={{width: "500px"}}/>
                                     <p>Category:</p> 
-                                      <input type="text" name="category" value={this.state.category} onChange={this.changeHandler} style={{width: "300px"}}/> 
+                                      <input type="text" required name="category" value={this.state.category} onChange={this.changeHandler} style={{width: "300px"}}/> 
                                         {/* <div>
                                             <select defaultValue={this.state.selectValue} name="category" value={category}
                                             onChange={this.changeHandler} >
@@ -141,7 +139,7 @@ class Faq extends Component{
        </div>  */}
 
                                     <p>Answer:</p>
-                                      <input type="text" name="answer" value={this.state.answer} onChange={this.changeHandler} style={{width: "500px"}}/>
+                                      <textarea required name="answer" value={this.state.answer} onChange={this.changeHandler} style={{width: "500px"}}/>
                                     
                                     {/* <textarea cols={50} rows={5} style= {{width:"398.017px"}}/> */}
                                     <br/> 
@@ -153,12 +151,8 @@ class Faq extends Component{
                                    
                                     { this.renderRedirect()}
                                     <div className="actualone"> 
-                                    <Popup trigger={
-                                    <input type="submit" class="btn btn-primary"  value="Submit"/>
-                                    }>
-                                      <div>Data has been successfully submitted !!</div>
-                                     </Popup>  &nbsp;  &nbsp; 
-                  
+                                   
+                  <input type="submit" class="btn btn-primary"  value="Submit"/>&nbsp;  &nbsp; 
                                     <button onClick={this.setRedirect} class="btn btn-success" >Visit FAQ</button>
                                     </div>
                                     

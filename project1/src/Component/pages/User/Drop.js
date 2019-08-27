@@ -23,6 +23,7 @@ class Drop extends React.Component {
       phone:''
       
     };
+   
     // this.selectOption = this.selectOption.bind(this);
     this.selectMultipleOption = this.selectMultipleOption.bind(this);
   }

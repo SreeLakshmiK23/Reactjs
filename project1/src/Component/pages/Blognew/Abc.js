@@ -1,82 +1,12 @@
 import React, {Component} from "react";
 import ContactCard from "./ContactCard";
-// import axios from 'axios';
-// import Card, {
-//   CardPrimaryContent,
-//   CardMedia,
-//   CardActions,
-//   CardActionButtons,
-//   CardActionIcons
-// } from "@material/react-card";
+import ReactHtmlParser,{processNodes,convertNodeToElement,htmlparser2} from 'react-html-parser';
 
-// function Abc() {
-//     return (
-  
+import {Redirect} from 'react-router-dom';
+  import{Card,  CardColumns,Nav} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
 class Abc extends Component 
 { 
-  
-    //  constructor(props)
-    // {
-    //     super(props)
-
-    //     this.state=
-    //     {
-    //        display:[],
-    //        error:''
-    //     }
-    // }
-//     componentDidMount()
-//     {
-//         axios.get('http://bb1ee001.ngrok.io/blog/display')
-        
-//         .then(response => {
-//             console.log(response)
-//             this.setState({display:response.data})
-//         })
-//         .catch(error => {
-//             console.log(error)
-//             this.setState({errorMsg:'Error while retreiving'})
-//         })
-//     }
-  
-    
-//     render()
-//     { const {display,errorMsg}=this.state
-//         return(
-//           <div>
-
-//             <ContactCard/> 
-                          
-//             <div className="container-z">
-               
-//               {   
-//                    display.length?
-                  
-//                     display.map(post => <div key={post.id}>
-//                      <p>Title:{post.title}</p> 
-//                      <p>Subject:{post.subject}</p> 
-//                      <p>Content:{post.content}</p> 
-//                     <img src={post.url } 
-//                     width="600"
-//                     height="400"
-//                      alt="React Bootstrap logo"
-//                     />
-//                     <hr/> </div>):               
-                    
-                    
-//                     null
-                    
-//                 }
-//                 { errorMsg ? <div>{errorMsg}</div> : null }
-
-                
-                 
-//             </div>
-          
-//           </div>
-// );
-// }
-// }
 
      constructor(props)
     {
@@ -86,11 +16,20 @@ class Abc extends Component
         {
            items:[],
            isolated:false,
+          //  redirect:false
         }
+    }
+
+    exploreClick(item){
+      this.props.history.push({
+        pathname:'/exploreblog',
+        state: item
+      })
     }
     componentDidMount()
          {
-      fetch('http://293edcd9.ngrok.io/blog/display')
+      fetch('https://54e275d4.ngrok.io/blog/display')
+      // fetch('https://raw.githubusercontent.com/Asmitha-Asmi/Data_Json/master/blog.json')
        .then(res => res.json())
          .then(json => 
          {
@@ -98,6 +37,7 @@ class Abc extends Component
              isLoaded:true,
              items:json,
            })
+           console.log('props are',this.props);
          }) ;
          }
         
@@ -105,7 +45,7 @@ class Abc extends Component
 render()
  {
    var  {isLoaded,items}=this.state;
-
+//  const html={} <p>Content:{ReactHtmlParser(item.textAreaContent)}</p> onClick={this.setRedirect()}
    if(!isLoaded)
    {
      return <div>Loading....</div>
@@ -115,28 +55,37 @@ render()
      <div >
 
        <ContactCard/>
-          <div> 
-             {items.map(item =>(
-      //   <li key={item.id}> 
-      //  Title: {item.title}| Subject:{item.subject}
-      // </li>
+                     
 
-          // <img src={item.url } 
-          //                         width="600"
-          //                           height="400"
-          //                           alt="React Bootstrap logo"/>
 
-                <div key={item.id} className="container-z">
-                          <p>Title : {item.title}</p>
-                          <p>Subject:{item.subject}</p>
-                       
-                          <p>Content:{item.textAreaContent}</p>
-                      
-                    
-                </div>
-           
-      ))}
-          </div>
+
+<div> 
+<CardColumns className="column-layout" >
+<div>
+{items.map(item=>(
+<Card style={{ width: '20rem' ,height:'15rem' }}>
+<div>
+<Card.Body>
+<Card.Title>{'Title:'+item.title}</Card.Title>
+
+<p>Subject:{item.subject}</p>
+
+
+
+<Card.Footer >
+
+<Button size="sm" variant="primary" onClick={()=>this.exploreClick(item)} >Explore</Button> 
+
+</Card.Footer>
+</Card.Body>
+</div>
+</Card>
+))}
+</div>
+</CardColumns>
+</div>
+ 
+
      </div>
    );
    }

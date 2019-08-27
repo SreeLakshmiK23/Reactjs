@@ -71,7 +71,7 @@ class Appone extends Component {
         e.preventDefault()
         console.log(this.state)
         axios
-        .post('http://7575cb65.ngrok.io/json',this.state)
+        .post('https://54e275d4.ngrok.io/json',this.state)
 
         .then(response => {
             console.log(response)

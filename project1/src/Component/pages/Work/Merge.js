@@ -13,7 +13,7 @@ import {Redirect} from 'react-router-dom';
 import Popup from "reactjs-popup";
 import Appone from "./Appone";
 
-
+import RaisedButton from "material-ui/RaisedButton";
 
 import orderBy from "lodash/orderBy";
 
@@ -52,12 +52,58 @@ class Merge extends Component
     sortDirection: "desc",
     checked:false,
 
+        document_name:"",
+    document_nameError:"",
+   document_status:false,
+   document_statusError:"",
+  
+
     //  document_name:"",
     //   document_status:""
   };
    this.handleChangenew = this.handleChangenew.bind(this);
     
     }
+
+change = e => {
+    // this.props.onChange({ [e.target.name]: e.target.value });
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  validate = () => {
+    let isError = false;
+    const errors = {
+      document_idError: "",
+      document_statusError: "",
+     
+    };
+
+    this.setState({
+      ...this.state,
+      ...errors
+    });
+
+    return isError;
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+    const err = this.validate();
+    if (!err) {
+      this.props.onSubmit(this.state);
+      //  this.props.handleSave(this.props.i, this.state.values);
+      // clear form
+      this.setState({
+        document_name: "",
+        document_nameError: "",
+        document_status: false,
+        document_statusError: "",
+      
+      });
+    }
+  };
 
       handleChangenew(checked) {
     this.setState({ checked });
@@ -178,7 +224,7 @@ visible : false
         e.preventDefault()
         console.log(this.state)
         axios
-        .post('http://4b2379b5.ngrok.io/json',this.state)
+        .post('http://b9263691.ngrok.io/json',this.state)
 
         .then(response => {
             console.log(response)
@@ -243,8 +289,8 @@ visible : false
                   <div className="spacer"/>
                     <div className="toolbar_navigation-items">
                       <ul >
-                          <li><a href='./checkdisnew'>Checklist</a></li>
-                          <li><a href='./userpage'>Users</a></li>
+                          <li><a href='./table'>Checklist</a></li>
+                          <li><a href='./join'>Users</a></li>
                           <li><a href='./displayblog'>Blog</a></li>
                           <li><a href='./faqdis'>FAQ</a></li>
                           <li><a href='/'>Logout</a></li>
@@ -252,9 +298,11 @@ visible : false
                     </div>
           </nav>
 
-
+            
             <div className="actualthree">
-            <input type="button" value="Create Checklist " class="btn btn-info" onClick={() => this.openModal()} />
+<input type="button" value="Create Checklist " class="btn btn-info" onClick={() => this.openModal()} />
+            
+    
             </div>
         </header>              
                
@@ -264,8 +312,9 @@ visible : false
     <div>
       <MuiThemeProvider>
         <section>
-          <Modal visible={this.state.visible} effect="fadeInUp" onClickAway={() => this.closeModal()}  >   
+          <Modal visible={this.state.visible} effect="fadeInUp" width="600" onClickAway={() => this.closeModal()}>   
           <div className="overflowone">
+   
            <div className="App">
           <form  onSubmit={this.submitHandler }>
           <h1><center><strong>Create Checklist</strong></center></h1>
@@ -279,6 +328,13 @@ visible : false
           onChange={e => this.change(e)}
          
           floatingLabelFixed
+        />
+        <br/>
+         <label>Public/Private:</label>
+                  <Switch
+          onChange={this.handleChangenew}
+          checked={this.state.checked}
+          id="normal-switch"
         />
         </div>
        
@@ -314,10 +370,7 @@ visible : false
                 name: "Document Name",
                 prop: "document_name"
               },
-              {
-                name: "Document Status",
-                prop: "document_status"
-              },
+            
              
               {
                 name: "Decsription",
@@ -327,14 +380,11 @@ visible : false
             ]}
             
           />
-            <label>Public/Private:</label>
-          <Switch
-          onChange={this.handleChangenew}
-          checked={this.state.checked}
-          id="normal-switch"
-        />
+          <form>
+            <RaisedButton label="+" onClick={e => this.onSubmit(e)}  primary />
+          </form>
           <div className="actualthree">
-          <input type="submit" class="btn btn-primary" value="Save"/>{' '}
+          <input type="submit" class="btn btn-primary" value="Save"/> &nbsp;  &nbsp; 
           
               
           <button onClick={this.setRedirect}  class="btn btn-info">Cancel</button> 

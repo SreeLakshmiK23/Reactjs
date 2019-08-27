@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-// import axios from 'axios';
+ import axios from 'axios';
 import './Toolbar.css';
 import Toolbar from './Toolbar.js';
 import {Button} from 'react-bootstrap';
@@ -7,53 +7,7 @@ import {Button} from 'react-bootstrap';
 class PostList extends Component
 
 
-// {   constructor(props)
-//     {
-//         super(props)
 
-//         this.state=
-//         {
-//            display:[],
-//            error:''
-//         }
-//     }
-//     componentDidMount()
-//     {
-//         axios.get('http://234849dc.ngrok.io/faq/display')
-        
-//         .then(response => {
-//             console.log(response)
-//             this.setState({display:response.data})
-//         })
-//         .catch(error => {
-//             console.log(error)
-//             this.setState({errorMsg:'Error while retreiving'})
-//         })
-//     }
-
-
-//     render()
-//     { const {display,errorMsg}=this.state
-//         return(
-//            <div>
-//            <Toolbar/>
-//             <div className="container-b">
-               
-//                 {/* <p>list of display</p> */}
-//                 {
-//                    display.length?
-//                     display.map(post => <div key={post.id}><p> Id:{post.id} </p> <p>Question:{post.question}</p> <p>Category:{post.category}</p> <p>Answer:{post.answer}</p><hr/> </div>):               
-                    
-                    
-//                     null
-//                 }
-//                 { errorMsg ? <div>{errorMsg}</div> : null }
-//             </div>
-//             </div>
-//         )
-//     }
-
-// }
 
 { constructor(props)
     {
@@ -67,7 +21,7 @@ class PostList extends Component
     }
     componentDidMount()
          {
-      fetch('https://raw.githubusercontent.com/Asmitha-Asmi/Data_Json/master/faq.json')
+      fetch('http://b9263691.ngrok.io/faq/displayall')
        .then(res => res.json())
          .then(json => 
          {
@@ -77,7 +31,33 @@ class PostList extends Component
            })
          }) ;
          }
-        
+
+         openModal=() =>
+    {
+      this.setState({ 
+        visible : true 
+         });
+    }
+
+     
+  
+
+    closeModal = ()  => {
+        this.setState({
+            visible: false
+        });
+    }
+    
+    deleteitems=(id)=>
+{   
+  // this.setState({ id: id})
+  console.log(id)
+
+      axios.delete('http://b9263691.ngrok.io/faq/delete/'+`${id}`);
+    // { data: { id:id } }
+      
+window.location.reload();
+}
 
 render()
  {
@@ -100,7 +80,7 @@ render()
                           <p>Category:{item.category}</p>
                           <p>Answer:{item.answer}</p>
                            
-        <Button  size="sm" variant="danger">Delete</Button>
+        <Button  size="sm" variant="danger" onClick={()=>this.deleteitems(item.id)}>Delete</Button>
                                              
                 </div>
            

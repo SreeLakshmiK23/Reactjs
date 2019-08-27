@@ -2,15 +2,22 @@ import React, {Component} from 'react';
 import './Toolbar1.css';
 // import button from 'react-bootstrap';
 import {Redirect} from 'react-router-dom';
-// const toolbar=props=> //functional component
-// (
+import './stylesnew.css';
+import ReactHtmlParser,{processNodes,convertNodeToElement,htmlparser2} from 'react-html-parser';
 
-    class Toolbarone extends Component
+    class explore extends Component
 {
-    state=
+     constructor(props)
     {
-        redirect:false
+        super(props);
 
+        this.state=
+        {
+           items:[],
+           abc:'',
+          
+           redirect:false
+        }
     }
 
     setRedirect=() =>
@@ -28,9 +35,13 @@ import {Redirect} from 'react-router-dom';
      
     }
     render()
+
     { 
+        console.log(this.props.history.location.state.id);
+        const{items}=this.state;
         return(
-    
+<div>   
+ 
 <header className="toolbar">                
     <nav className="toolbar_navigation">
    
@@ -46,7 +57,7 @@ import {Redirect} from 'react-router-dom';
             <div className="toolbar_navigation-items">
                 <ul >
                     <li><a href='./table'>Checklist</a></li>
-                    <li><a href='./join'>Users</a></li>
+                    <li><a href='./userpage'>Users</a></li>
                     <li><a href='./displayblog'>Blog</a></li>
                     <li><a href='./faqdis'>FAQ</a></li>
                     <li><a href='/'>Logout</a></li>
@@ -56,20 +67,27 @@ import {Redirect} from 'react-router-dom';
     
 {/* <div className="actual">
 <button type="button" class="btn btn-primary">CREATE  BLOG</button>
-</div> */}
+</div> // { this.setState({abc : this.props.history.location.state.textAreaContent})
+//      }{     ReactHtmlParser(this.state.abc)}
+*/}
 
- <div>
- { this.renderRedirect()}
- <div className="actualstyle">
- <input type="submit" class="btn btn-primary" value="CREATE BLOG" onClick={this.setRedirect} />
- </div>
- </div> 
 
 </header>
+<div className="container-z">
 
+{this.props.history.location.state.title}<br/>
+{this.props.history.location.state.subject}<br/>
+{ReactHtmlParser(this.props.history.location.state.textAreaContent)}
+
+
+</div>
+
+
+
+</div>
 
 
 );
     }
     }
-export default Toolbarone;
+export default explore;

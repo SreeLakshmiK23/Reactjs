@@ -7,13 +7,26 @@ import { render } from "react-dom";
 import Picky from "react-picky";
 import "react-picky/dist/picky.css";
 import { createBrowserHistory } from 'history';
+import './index.css';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Redirect } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import Userpage from './index'
+const history = createBrowserHistory();
 
-import {Redirect} from 'react-router-dom';
+const unlisten = history.listen((location, action) => {
+  // location is an object like window.location
+  console.log(action, location.pathname, location.state);
+});
 
-class Fetch extends Component {
+class Join extends Component {
+
+  
   constructor(props){
     super(props);
   this.state={
+    // visiblenew: false,
         data:[],
         isLoaded: false,
         
@@ -22,19 +35,24 @@ class Fetch extends Component {
       value: null,
       arrayValue: [],
       datalist:[],
+      redirect:false,
+      name: '',
+            phone: '',
+            email: '',
+            place: '',
+            designation: ''
       
-redirect:false
-
-
   };
+
     this.selectMultipleOption = this.selectMultipleOption.bind(this);
-    const user='';
+   
+  
 }
 
 
 async componentDidMount(){
-  var res1 = await axios.get('http://293edcd9.ngrok.io/final/listuser');
-  var res2= await axios.get('http://293edcd9.ngrok.io/distinct');
+  var res1 = await axios.get('http://b9263691.ngrok.io/final/listuser');
+  var res2= await axios.get('http://b9263691.ngrok.io/distinct');
   console.log(res1, res2);
   this.setState({
       isLoaded:true,
@@ -42,33 +60,48 @@ async componentDidMount(){
       datalist:res2.data,
     })            
   console.log(this.state);
+  this.userClick=this.userClick.bind(this);
 }
 
-     setRedirectnew=() =>
-    {
-        window.location.reload();
-    }
+ changetry =(event,object,id) => {
+event.preventDefault();
+console.log("here is the object",object)
 
-        setRedirect=() =>
-    {
-        this.setState({
-            redirect:true
-        })
-        //window.location.reload();
-    }
+ console.log("this.props",this.props)  
+     //props is not initialized
 
-    renderRedirect =() =>{
-        if(this.state.redirect)
-        {
-            return<Redirect to='/viewprofile'/>
-        }
+ this.props.history.push({
+    pathname: '/viewprofile/',
+    state:{detail:object.id}
+    // state : {id: 1}
+ })
+  }
+
+    //  setRedirectnew=() =>
+    // {
+    //     window.location.reload();
+    // }
+
+    //     setRedirect=() =>
+    // {
+    //     this.setState({
+    //         redirect:true
+    //     })
+    //     //window.location.reload();
+    // }
+
+    // renderRedirect =() =>{
+    //     if(this.state.redirect)
+    //     {
+    //         return<Redirect to='/profile'/>
+    //     }
      
-    }
+    // }
 
    openModal=(phone) =>
     {
       this.setState({ phone: phone, visible : true });
-      // const postData = { phone: this.state.phone } 
+      // const postData = { phone: this.state.phone }  onClick={ (e)=>this.changetry(e,obj,phone)} 
 }  
     closeModal = ()  => {
         this.setState({
@@ -87,7 +120,7 @@ async componentDidMount(){
         }
         console.log('Payload', payload);
         try {
-            await axios.post('http://293edcd9.ngrok.io/final/assign',payload);
+        await axios.post('http://b9263691.ngrok.io/final/assign',payload);
         this.closeModal()
         } catch (e) {
           console.log(e);
@@ -95,41 +128,66 @@ async componentDidMount(){
         }
     }
     
- 
+    userClick(item){
+      console.log('=====', this.props);
+      this.props.history.push({
+        pathname:'/viewprofile',
+        state: item
+      })
+    }
+
   selectMultipleOption(value) {
     console.count('onChange')
      console.log("Val", value);
-     this.setState({ arrayValue: value });
-     
-  
-        // axios
-        // .post('http://fe7ca1b8.ngrok.io/assign',[this.state.arrayValue,this.state.phone])
-
-        // .then(response => {
-        //     console.log(response)
-        // })
-        // .catch(error => {
-        //     console.log(error)
-        // })
-    
+     this.setState({ arrayValue: value }); 
   }
+  openModalnew() {
+        this.setState({
+            visiblenew: true,
+           name: '',
+            phone: '',
+            email: '',
+            place: '',
+            designation: ''
+        });
+    }
 
-  pushtry =(event,object) => {
-event.preventDefault();
-axios.post("https://emailtest.free.beeceptor.com",object) ;
+    closeModalnew() {
+        this.setState({
+            visiblenew: false
+        });
+    }
+  changeHandlernew = e => {
+        this.setState({ [e.target.name]: e.target.value })
+    }
 
- this.props.history.push({
-    pathname: '/editreward' 
-  })
-  }
+    submitHandlernew = e => {
+        e.preventDefault()
+        console.log(this.state)
+        axios
+            .post('http://b9263691.ngrok.io/final/save', this.state)
+            .then(response => {
+
+                console.log(response)
+
+            })
+            .catch(error => {
+
+                console.log(error)
+
+            })
+
+    }
   
 
   render() { 
-    var { i,isLoaded,data,arrayValue,phone}= this.state;
+    var { i,isLoaded,data,arrayValue}= this.state;
 
     var {datalist}=this.state;
+    
+    {console.log(datalist)}
    const bigList=this.state.datalist;
-
+  const { name,  phone, email, place, designation } = this.state
 
 
 
@@ -141,28 +199,118 @@ axios.post("https://emailtest.free.beeceptor.com",object) ;
       return (  
 
         <div>
+        <header className="heading">
+
+                        <nav className="toolbar_navigation">
+                         {/* style={{ background: "rgb(177, 196, 219)" }}> */}
+
+                            <div className="toolbar_logo">
+
+                                <img
+                                    src={require("/home/nineleaps/Desktop/Reactjs/project1/src/Component/pages/User/nine1.jpg")}
+                                    width="225"
+                                    height="70"
+                                    className="d-inline-block align-top"
+                                    alt="React Bootstrap logo"
+                                />
+                            </div>
+                            <div className="spacer" />
+                            <div className="toolbar_navigation-items">
+                                <ul >
+                                    <li ><a href='/table' >Checklist</a></li>
+                                    <li ><a href='/join' >Users</a></li>
+                                    <li ><a href='./displayblog' >Blog</a></li>
+                                    <li ><a href='./faqdis' >FAQ</a></li>
+                                    <li ><a href='/' >Logout</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                       
+                       
+                          <div className="actual">
+                            <input type="button" value="Add user"  class="btn btn-primary" onClick={() => this.openModalnew()} />
+                            </div>
+                            </header>
+                             <section>
+                            <Modal visible={this.state.visiblenew} width="600" effect="fadeInUp" onClickAway={() => this.closeModalnew()}>
+                                <div>
+                                    {/* <h1>Title</h1>
+                        <p>Some Contents</p> 
+                        
+                         style={{
+                            position: "absolute",
+                            top: "18%",
+                            right: "50%"
+                        }}
+                        width="800" height="600"
+                        
+                        
+                        
+                        */}
+
+                                    <form onSubmit={this.submitHandlernew}  style={{paddingTop:"10px", paddingRight:"40px",paddingLeft:"40px"}}>
+                                        <br />
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput">Name</label>
+                                            <input type="text" name="name" value={name} class="form-control" onChange={this.changeHandlernew} placeholder=" Name" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">Phone</label>
+                                            <input type="text" name="phone" value={phone} onChange={this.changeHandlernew} class="form-control" placeholder="Phone No." />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">email</label>
+                                            <input type="text" name="email" value={email} onChange={this.changeHandlernew} class="form-control" placeholder="Email" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">place</label>
+                                            <input type="text" name="place" value={place} onChange={this.changeHandlernew} class="form-control" placeholder="Place" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2"> Designation</label>
+                                            <input type="text" name="designation" value={designation} onChange={this.changeHandlernew} class="form-control" placeholder="Designation" />
+                                        </div>
+
+                                        
+                                        
+                                        <input type="submit"  class="btn btn-primary" value="Save"  onClick={this.closeModalnew} />
+                
+                                 
+                                     
+                                     
+                                      {/* <button onClick={this.setRedirect}>Userpage</button> */}
+                                    </form>                                
+                                </div>
+                            </Modal>
+                        </section>
+                    
+        
           <div key={data.id}>          
-                 <table class="table" style={{width:" 80%",
-                    color: "#212529",    margin: "110px",
+            <table class="table" style={{width:" 80%", color: "#212529",    margin: "110px",
                     border:" 2px solid black"}}>
-                   <thead>
-                     <tr>
-                       <th>Sr No.</th>
-                       <th>Name</th>
-                      
-                       <th>Mobile</th>
-                       <th>email</th>
-                       <th>Place</th>
-                       <th>Designation</th>
-                       <th></th>
-                     </tr>
-                   </thead>
-                   {
+            <thead>
+              <tr>
+                <th>Sr No.</th>
+                <th>Name</th>
+              
+                <th>Mobile</th>
+                <th>email</th>
+                <th>Place</th>
+                <th>Designation</th>
+                <th></th>
+              </tr>
+            </thead>
+            {
+
+                   
               data.map(obj=>( 
                     
-                  
+                
                    <tbody>
-                   { this.renderRedirect()}
+                     
+                   
                      <tr>
                        <td>{` ${i++}`}</td>
                        <td>{obj.name}</td>
@@ -173,7 +321,8 @@ axios.post("https://emailtest.free.beeceptor.com",object) ;
                        <td>{obj.designation}</td>
                       
                        <Button size="sm" onClick={()=>this.openModal(obj.phone)}  variant="primary">Assign</Button> &nbsp; &nbsp;
-                       <Button size="sm" variant="secondary" onClick={ (e)=>this.pushtry(e,obj)}>Profile</Button>
+                       <Button size="sm" variant="secondary"  onClick={()=>this.userClick(obj) } >Profile</Button>
+                    
                      </tr>
                      
                       
@@ -185,12 +334,12 @@ axios.post("https://emailtest.free.beeceptor.com",object) ;
               
           </div>  
           
-  <Modal visible={this.state.visible} width="800" height="600" effect="fadeInUp" onClickAway={() => this.closeModal()}>
-    <form>
-      <div className="container">
+  <Modal visible={this.state.visible} effect="fadeInUp" onClickAway={() => this.closeModal()} >
+    <form  className="spacing">
+      
        
-          <div className="col">
-            <h3>Multi select</h3>
+          <div>
+            <h2><center><strong>Assign checklist</strong></center></h2>
                  <Picky
               value={this.state.arrayValue}
               options={bigList}
@@ -202,17 +351,17 @@ axios.post("https://emailtest.free.beeceptor.com",object) ;
               labelKey="name"
               multiple={true}
               includeSelectAll={true}
-              // includeFilter={true}
-              dropdownHeight={600}
+              includeFilter={true}
+              // dropdownHeight={600}
             />
           </div>
 
   
 
-    </div>
-    <div className="actual">
+  
+    <div className="place">
        <button class="btn btn-primary" onClick={this.submitHandler}>Submit</button>  &nbsp;
-       <button onClick={this.setRedirectnew}  class="btn btn-info">Cancel</button>
+       <button onClick={this.closeModalnew}  class="btn btn-info">Cancel</button>
        </div>
        </form>
 
@@ -230,4 +379,4 @@ axios.post("https://emailtest.free.beeceptor.com",object) ;
   }
 }
  
-export default Fetch;
+export default withRouter(Join);

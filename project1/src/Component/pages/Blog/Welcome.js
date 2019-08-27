@@ -1,23 +1,14 @@
 import React,{Component} from 'react';
-// import {Form,Navbar} from 'react-bootstrap';
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-// import draftToHtml from 'draftjs-to-html';
-// import htmlToDraft from 'html-to-draftjs';
-// import { EditorState, convertToRaw } from 'draft-js';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+
 import './styleblog.css';
-// import {Redirect} from 'react-router-dom';
 import axios from 'axios';
-// import Header from './Header';
-import {nav} from 'react-bootstrap';
-// import { EditorState } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
 import { EditorState, convertToRaw, ContentState } from 'draft-js';
 import {Redirect} from 'react-router-dom';
-// class Welcome extends Component{
-    // class UncontrolledEditor extends Component {
+
 
 class EditorConvertToHTML extends Component {
   constructor(props) {
@@ -31,11 +22,13 @@ class EditorConvertToHTML extends Component {
         editorState,
          title:'' ,
          subject:'' ,
+         content: null,
+         textAreaContent: '',
       };
     }
+    window.blogPageState = this.state;
   }
 
-  
     state=
     {
         redirect:false
@@ -62,15 +55,19 @@ class EditorConvertToHTML extends Component {
       editorState,
     });
   };
-    changeHandler= e =>{
-        this.setState({[e.target.name]:e.target.value})
+    changeHandler = (e, editorType = false , value = '') => {
+        if (editorType) {
+            this.setState({content :e , textAreaContent: value }, () => console.log('editorType',this.state)); 
+        } else {
+            this.setState({[e.target.name]:value ? e.target.value : e.target.value}, () => console.log('data',this.state));
+        }
     }
     submitHandler= e =>
     {
         e.preventDefault()
         console.log(this.state)
         axios
-        .post('http://30b929de.ngrok.io/blog/save',this.state)
+        .post('http://54e275d4.ngrok.io/blog/save',this.state)
 
         .then(response => {
             console.log(response)
@@ -83,7 +80,7 @@ class EditorConvertToHTML extends Component {
  render()
  { 
     const { editorState } = this.state;
-      const{title,subject,content}=this.state
+      const{title,subject,textAreaContent}=this.state
     return(
       
       <div>
@@ -94,7 +91,7 @@ class EditorConvertToHTML extends Component {
                      width="200" height="80" 
                     class="d-inline-block align-top" 
                     alt="React Bootstrap logo"/>
-                    ONBOARDING
+                   
                     {/* </a> */}
                     </nav>
        {/* <div > */}
@@ -107,35 +104,37 @@ class EditorConvertToHTML extends Component {
                         
 
                         <p>Title</p>
-                        <input type="text" name="title" value={title}  onChange={this.changeHandler} style={{width: "500px"}}/>
+                        <input type="text"required name="title" value={title}  onChange={this.changeHandler} style={{width: "500px"}}/>
                        
         
                         <p>Subject</p>
-                        <input  type="text" name="subject" value={subject}  onChange={this.changeHandler} style={{width: "500px"}}/>
+                        <input  type="text" required name="subject" value={subject}  onChange={this.changeHandler} style={{width: "500px"}}/>
 
                         <p>Content:</p>    
                   
                   <div >
                    <Editor 
-      
+                    required
+                    onChange={(e) => this.changeHandler(e,true,draftToHtml(convertToRaw(editorState.getCurrentContent())))}
                     editorState={editorState}
                     wrapperClassName="demo-wrapper"
                     editorClassName="demo-editor"
-                   onEditorStateChange={this.onEditorStateChange}            
+                    onEditorStateChange={this.onEditorStateChange}         
                     />
                      <textarea
                       disabled
-                      name="content"
+                      name="textAreaContent"
                       value={draftToHtml(convertToRaw(editorState.getCurrentContent()))}
+                        
                        />
                    </div>
                     <hr/>
                      <br/> 
                                   <div>
                                     { this.renderRedirect()}
-                                     <div className="actualtwo">< input type="submit"   class="btn btn-primary" value="Submit"  /></div>{' '}
-                                      <button onClick={this.setRedirect} class="btn btn-success" >Visit blog</button>
-                    
+                                     <div className="actualtwo">
+                                     <input type="submit"   class="btn btn-primary" value="Submit"  />  &nbsp;  &nbsp; 
+                                      <button onClick={this.setRedirect} class="btn btn-success" >Visit blog</button></div>
                                   </div> 
                     
                   </form>
