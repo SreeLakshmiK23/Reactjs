@@ -7,30 +7,15 @@
     background-color: rgb(209, 224, 238)   
 
 }
-.container-b{
-    /* width: 1029px;
+/* .container{
+    width:210px;
     height:400px;
-    background: rgb(159, 167, 201); */
-    /* left: 140px;
-    top: 170px;
-    position: absolute;
-    padding-left: 2rem;
-    padding-top: 2rem; */
+    background: rgb(159, 167, 201);
+    left: 74px;
 
-    margin-top: 170px;
-    margin-left: 140px;
-    /* background: rgb(216, 121, 121); */
-    width:1000px;
-    height:250px;
-     overflow:auto;
-    /* height:500px; */
-    padding-left: 1.5rem;
-    padding-right: 3rem;
-    padding-top: 1rem;
-    background-color: rgb(88, 153, 228);
-    box-shadow: 10px 10px;
-    padding-bottom: 1rem;
-    }
+top: 170px;
+position: absolute;
+} */
 /* .jumbotron{
     width:210px;
     height:110px;
@@ -93,25 +78,18 @@ text-decoration:none;
 .toolbar_navigation-items a:active
 {
 
-    color:rgb(78, 9, 32);
+    color:palevioletred;
 }
 
  
-.actual{
+.actualstyle{
     /* align-items: flex-end; */
     text-align: center;
     display: inline-block;
-    font-size: 1.5rem;
+    /* font-size: 1.5rem; */
     display:flex;  
     justify-content:center; 
     align-Items:center;
-    margin:25px;
+    /* margin:25px; */
+    margin-top: 5rem;
    }
-   .padnew
-{
-    margin-right: 2rem;
-    margin-left: 2rem;
-    margin-bottom: 2rem;
-    margin-top: 2rem;
-}
-

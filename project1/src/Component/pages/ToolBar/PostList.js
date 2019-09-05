@@ -82,10 +82,10 @@ render()
                            
         <Button  size="sm" variant="danger" onClick={()=>this.deleteitems(item.id)}>Delete</Button>
                                              
-                </div>
+         </div>
            
       ))}
-          </div>
+       </div>
      </div>
    );
    }

@@ -1,5 +1,5 @@
 import React from 'react';
-import{Card,  CardColumns,Nav} from 'react-bootstrap';
+import{Card,  CardColumns,Nav,Table} from 'react-bootstrap';
 import {Button} from 'react-bootstrap';
 import  './check.css';
 import Merge from './Merge.js';
@@ -283,17 +283,29 @@ return(
           <div >
          
            <h2><center><strong>Assign checklist</strong></center></h2>
-       
-          {this.state.abc.map(aa=>
           <div>
-            <text>{"Document Name:"+aa.document_name}</text><br/>
-            <text>{"Order:"+aa.order}</text><br/>
-              <text>{"Description:"+aa.description}</text>
-              <hr/>
-</div>
+          {/* <form> */}
+          <Table striped bordered hover>
+          <thead>
+          <tr>
+          <td><h3>Document Name</h3></td>
+          <td><h3>Order</h3></td>
+          <td><h3>Description</h3></td>
+          </tr>
+          </thead>
+          {this.state.abc.map(aa=>
+        <tbody>
+          <tr>
+            <td>{aa.document_name}</td>
+            <td>{aa.order}</td>
+              <td>{aa.description}</td>
+              </tr>
+          </tbody>
           )
           }
-           
+       </Table>
+       {/* </form> */}
+</div>  
       
           </div>
 

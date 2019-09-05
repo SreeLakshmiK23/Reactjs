@@ -13,7 +13,7 @@ import Checklist from './Component/pages/Checklist/check';
 import explore from './Component/pages/Blognew/Explore';
 // import PostListnew from './Component/pages/ToolBar/PostList1';
 import material from './Component/pages/Checklist/materialcheck';
-// import Login from './Component/pages/Login/index';
+ import Login from './Component/pages/Login/index';
 import Userpage from './Component/pages/User/index';
 import list from './Component/pages/Checklist/newcheck';
 // import listnew from './Component/pages/Checklist/check2';
@@ -48,8 +48,8 @@ function App() {
                  <Route path ="/writeblog" exact component={EditorConvertToHTML}/> 
                 <Route path ="/displayblog" exact component={Abc}/> 
                 <Route path="/checkdis"  exact component={Checklist}/>
-                {/* <Route path="/writecheck"  exact component={Checknew}/>
-                <Route path="/"  exact component={Login}/> */}
+                {/* <Route path="/writecheck"  exact component={Checknew}/> */}
+                <Route path="/"  exact component={Login}/>
                 
             
                <Route path="/checkdisnew"  exact component={list}/>

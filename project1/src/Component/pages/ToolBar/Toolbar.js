@@ -44,9 +44,6 @@ class Toolbar extends Component
     {
       this.setState({ 
           visible : true,
-            question:'' ,
-            category:'' ,
-            answer:'' ,
         
             });
     }
@@ -112,7 +109,13 @@ class Toolbar extends Component
     {/* <div className="button_space"><button type="button" class="btn btn-primary">ADD FAQ</button></div> */}
 {/* <div className="actual"><button type="button" class="btn btn-primary">ADD FAQ</button></div> style={{fontSize: "40px"}}*/}
 
-
+ <div>
+ { this.renderRedirect()}
+ <div className="actualone">
+<input type="button" value="Add Faq " class="btn btn-info" onClick={() => this.openModal()} />
+</div>
+ 
+ </div> 
 
 
 
@@ -126,12 +129,6 @@ class Toolbar extends Component
 
 
 </header>
-
-<div>
- <div className="actualone">
-<input type="button" value="Add Faq " class="btn btn-info" onClick={() => this.openModal()} />
-
- </div>
 
 
 
@@ -175,7 +172,6 @@ class Toolbar extends Component
                                 </div>
                                
                                 </Modal>
-                                </div>
   </div>
        );
    }

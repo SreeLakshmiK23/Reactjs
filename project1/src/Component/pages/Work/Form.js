@@ -97,7 +97,7 @@ export default class Form extends React.Component {
          
          </tr>
        </table> */}
-        <RaisedButton label="Add Checklist" onClick={e => this.onSubmit(e)}  primary />
+        <RaisedButton label="+" onClick={e => this.onSubmit(e)}  primary />
       </form>
       
     );

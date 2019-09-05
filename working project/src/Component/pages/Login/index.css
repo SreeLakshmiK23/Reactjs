@@ -1,0 +1,29 @@
+
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background:url(./abc.png) no-repeat center center fixed;
+ background-color:#e4e4ba;
+
+  height: 100%;
+  width: 100%;
+
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

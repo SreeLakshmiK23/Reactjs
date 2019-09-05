@@ -40,8 +40,7 @@ class Merge extends Component
     {
         super(props)
       
-        this.state=
-        {         
+        this.state={         
          
           checklist_name:'',
     data: [],
@@ -50,19 +49,20 @@ class Merge extends Component
     editIdx: -1,
     columnToSort: "",
     sortDirection: "desc",
-    checked:false,
+    Private:false,
 
         document_name:"",
     document_nameError:"",
    document_status:false,
    document_statusError:"",
-  
+  selectedOption:'',
+  	isChecked: null
 
     //  document_name:"",
     //   document_status:""
   };
    this.handleChangenew = this.handleChangenew.bind(this);
-    
+    //  this.radioChange = this.radioChange.bind(this); 
     }
 
 change = e => {
@@ -71,6 +71,25 @@ change = e => {
       [e.target.name]: e.target.value
     });
   };
+
+	componentWillMount () {
+		this.setState( { isChecked: this.props.isChecked } );
+	}
+
+
+      _handleChange () {
+		this.setState( { isChecked: !this.state.isChecked } );
+    }
+
+
+
+  //  radioChange(e) {
+  //    console.log("e ",e)
+  //   this.setState({
+  //     selectedOption: e.currentTarget.value
+  //   });
+  //   console.log("status:",this.state.selectedOption)
+  // }
 
   validate = () => {
     let isError = false;
@@ -105,8 +124,9 @@ change = e => {
     }
   };
 
-      handleChangenew(checked) {
-    this.setState({ checked });
+      handleChangenew(Private) {
+    this.setState({ Private });
+    console.log(this.state.Private)
   } 
 
   // const body = {order,name,description};
@@ -153,7 +173,8 @@ change = e => {
     this.setState({
       rows: this.state.rows.slice(0, -1)
     });
-  };
+  }
+
   handleRemoveSpecificRow = (idx) => () => {
     const rows = [...this.state.rows]
     rows.splice(idx, 1) //check
@@ -312,7 +333,7 @@ visible : false
     <div>
       <MuiThemeProvider>
         <section>
-          <Modal visible={this.state.visible} effect="fadeInUp" width="600" onClickAway={() => this.closeModal()}>   
+          <Modal visible={this.state.visible} effect="fadeInUp"  onClickAway={() => this.closeModal()}>   
           <div className="overflowone">
    
            <div className="App">
@@ -330,23 +351,36 @@ visible : false
           floatingLabelFixed
         />
         <br/>
-         <label>Public/Private:</label>
-                  <Switch
+
+        <label>
+                 
+                </label>
+         <label>Public/Private </label> 
+           <Switch
           onChange={this.handleChangenew}
-          checked={this.state.checked}
+          checked={this.state.Private}
           id="normal-switch"
         />
+        {/* <div>
+        
+        <input defaultChecked
+              type="radio"
+               value="Private"
+               checked={this.state.selectedOption === "Private"}
+               onChange={this.radioChange} />Public
+
+        <input type="radio"
+               value="Public"
+               checked={this.state.selectedOption === "Public"}
+               onChange={this.radioChange}/>Private
+        
+         
+      </div>  */}
         </div>
        
      
 
-          <Form
-            onSubmit={submission =>
-              this.setState({
-                data: [...this.state.data, submission]
-              })
-            }
-          />
+
           <Table
             handleSort={this.handleSort}
             handleRemove={this.handleRemove}
@@ -380,9 +414,16 @@ visible : false
             ]}
             
           />
-          <form>
+            <Form
+            onSubmit={submission =>
+              this.setState({
+                data: [...this.state.data, submission]
+              })
+            }
+          />
+          {/* <form>
             <RaisedButton label="+" onClick={e => this.onSubmit(e)}  primary />
-          </form>
+          </form> */}
           <div className="actualthree">
           <input type="submit" class="btn btn-primary" value="Save"/> &nbsp;  &nbsp; 
           
